@@ -157,3 +157,18 @@ a=int(input("Enter a: "))
 b=int(input("Enter b: "))
 
 print("a >= b ",a>=b)
+
+
+
+
+#Making a simple calculator
+print("\n\n************ Simple Calculator ********************")
+num1=int(input("Enter a number1: "))
+num2=int(input("Enter a number2: "))
+print("Sum of",num1,"&",num2,"is",num1+num2)
+print("Difference of",num1,"&",num2,"is",num1-num2)
+print("Product of",num1,"&",num2,"is",num1*num2)
+print("Division of",num1,"&",num2,"is",num1/num2)
+print("Modulus of",num1,"&",num2,"is",num1%num2)
+print("Power of",num1," & ",num2,"is",num1**num2)
+print("Floor Division of",num1,"&",num2,"is",num1//num2)
