@@ -37,7 +37,11 @@ print(list)
 print(list.sort(reverse=True))
 print(list)
 
+list.insert(3)
 
+for i in range(5):
+    list.insert(i,i+1)
+print(list)
 
 list_str=["banana","plum","apple","apricot"]
 
