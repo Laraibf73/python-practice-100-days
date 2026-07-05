@@ -1,123 +1,91 @@
 # Python Beginner Projects
 
-A small collection of beginner-friendly Python projects that demonstrate basic concepts such as dictionaries, functions, loops, and user interaction.
+A collection of beginner-friendly Python scripts demonstrating core concepts like dictionaries, functions, loops, and user interaction.
 
 ## Projects
 
-- `student-grade-system.py` - A student grade management system with student enrollment, marks entry, average calculation, topper selection, and grade display.
-- `contact-book/` - A contact book application for adding, deleting, searching, updating, and listing contacts.
-- `todo-list/` - A basic task list manager.
-- `library-management-system/` - Starter project for managing books.
+- `contact-book.py` - Contact Book application for adding, deleting, searching, updating, and listing contacts.
+- `employee-payroll-system.py` - Employee payroll calculator that computes total salary, overtime, and prints a formatted payslip.
+- `hotel-room-booking-system.py` - Hotel room booking system with room availability, booking, cancellation, and booking status.
+- `movie-ticket-booking.py` - Movie ticket booking app that displays movies, selects seats, calculates bill, and generates a ticket.
+- `student-grade-system.py` - Student grade management tool for adding students, recording marks, calculating averages, and selecting the topper.
 
-## Contact Book Description
+## How to use
 
-The contact book project demonstrates dictionary usage and user input handling. It supports:
-
-- adding new contacts
-- deleting existing contacts
-- searching contacts by name
-- updating phone numbers
-- displaying all stored contacts
-
-## Contact Book Preview
-
-<img width="1087" height="717" alt="image" src="https://github.com/user-attachments/assets/693770df-38d1-469e-b1c9-0e3126222189" />
-
-Note: Place your contact book screenshot image at `contact-book/preview.png` in the repository. If you pasted the image earlier, save it with that filename inside the `contact-book` folder so it appears above.
-
-## Student Grade System Preview
-
-<img width="932" height="812" alt="image" src="https://github.com/user-attachments/assets/45adf4da-0330-4c60-a7d0-2ead0da780d1" />
-
-## Usage
-
-Open the project folder and run the Python script for the project you want to use:
-
-```bash
-python student-grade-system.py
-```
-
-## Notes
-
-- Contact names are stored in uppercase for consistent lookup.
-- Invalid input is handled with clear prompts.
-
-## Comprehensive Usage & Details
-
-This section provides explicit commands, example workflows, and the programming concepts practiced in each project.
-
-Requirements
-
-- Python 3.8 or newer installed and available as `python` on your PATH.
-
-Running a project
-
-1. Open a terminal and change to the `Python-Beginner-Projects` folder:
+From the `Python-Beginner-Projects` folder, run any script with Python:
 
 ```bash
 cd "d:/Python Code Practice/python-practice-100-days/Python-Beginner-Projects"
-```
-
-2. Run any script directly with Python, for example:
-
-```bash
+python contact-book.py
+python employee-payroll-system.py
+python hotel-room-booking-system.py
+python movie-ticket-booking.py
 python student-grade-system.py
-python ../Week2-ControlFlow_Functions/miniProject.py   # Banking system in Week2 folder
 ```
 
-Student Grade System (`student-grade-system.py`)
+## Project details
 
+### Contact Book
 - Features:
-  - Add student (stores student name normalized to uppercase)
-  - Add comma-separated marks for a student
-  - Calculate average marks for a student
-  - Find the topper (student with highest average)
-  - Display all stored grades
+  - Add contact
+  - Delete contact
+  - Search contact
+  - Update phone number
+  - Show all contacts
+- Implementation:
+  - Stores contacts in a dictionary keyed by uppercase names for case-insensitive search.
+- Run this script and follow the interactive menu prompts.
 
-- Example workflow:
-  1.  Run `python student-grade-system.py`.
-  2.  Choose `1` to add a student, enter the name.
-  3.  Choose `2` to add marks (enter values like `78,85,90`).
-  4.  Choose `3` to calculate and display the average.
-
-- Concepts practiced:
-  - Lists and list comprehensions (parsing comma-separated input)
-  - Dictionaries for mapping students -> marks
-  - Input/output handling and validation
-  - Basic control flow (loops and conditionals)
-
-Contact Book (`contact-book/`)
-
+### Employee Payroll System
 - Features:
-  - Add, delete, search, update, and list contacts
-  - Case-insensitive lookups via normalized (uppercase) keys
+  - Enter employee details
+  - Calculate overtime pay
+  - Compute total salary
+  - Print a formatted payslip
+- Implementation:
+  - Uses basic input parsing and arithmetic to compute payroll.
 
-- How to show your screenshot in the README:
-  1.  Save your contact-book screenshot as `preview.png` in the `contact-book` folder.
-  2.  Commit the image to the repository. The main README references `contact-book/preview.png` and will display it on GitHub.
+### Hotel Room Booking System
+- Features:
+  - Display available rooms
+  - Book a room
+  - Cancel a booking
+  - Show booking status for all rooms
+- Implementation:
+  - Uses a dictionary of room records with type, price, and booked status.
 
-- Concepts practiced:
-  - Using dictionaries for fast lookups
-  - Function organization and modular code
-  - Simple error handling for user input
+### Movie Ticket Booking System
+- Features:
+  - Display movies and seat availability
+  - Select seats to book
+  - Calculate bill for selected seats
+  - Generate a ticket summary
+- Implementation:
+  - Uses a dictionary of movies with available seats and booked seat counts.
 
-Other Projects
+### Student Grade System
+- Features:
+  - Add student names
+  - Record marks for students
+  - Calculate average marks
+  - Display the top-performing student
+- Implementation:
+  - Uses a dictionary to map student names to their marks.
 
-- `todo-list/` and `library-management-system/` are starter templates demonstrating lists, file persistence (optionally), and CRUD-style operations.
+## Notes
 
-Contributing
+- Requires Python 3.8 or newer.
+- Run scripts from the `Python-Beginner-Projects` folder.
+- If you want to add more projects, include them in this README and add a short description.
 
-If you'd like to add improvements or images:
+## Contributing
 
-1. Place screenshot images in the appropriate project subfolder (e.g. `contact-book/preview.png`).
-2. Stage and commit your changes:
+1. Add or improve project descriptions in this README.
+2. Save any screenshots or preview images alongside their project scripts.
+3. Commit your changes:
 
 ```bash
 git add .
-git commit -m "docs: update Python-Beginner-Projects README with usage and previews"
+git commit -m "docs: update Python-Beginner-Projects README with current project details"
 git push origin main
 ```
-
-License & Notes
-
-These are practice projects for learning. Feel free to modify them and open PRs if you publish this repository publicly.
