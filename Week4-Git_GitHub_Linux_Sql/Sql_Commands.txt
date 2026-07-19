@@ -1,0 +1,310 @@
+
+
+
+/*drop table Student*/
+
+/*
+create table Student
+(id INT Primary Key,
+ name varchar(50),
+ age INT,
+ marks INT NOT NULL,
+ remarks varchar(50)
+)*/
+
+/*Insert into Student
+(id,name,age,marks,remarks)
+values
+  (101,'Ali',23,60,'Average'),
+  (102,'Ahmad',24,90,'Good'),
+  (103,'Khan',25,97,'Excellent')*/
+  
+
+/*
+Create Table Course
+(id int Primary key,
+name varchar(50))*/
+
+
+/*Insert into Course
+(id,name)
+values
+(1,'Maths'),
+(2,'English'),
+(3,'Physics')*/
+
+Alter table Student
+Add course_id references Course(id)
+
+
+
+Update Student Set course_id=2 where id=103
+
+Update Student Set course_id=2 where id=101
+
+
+
+Level 1: Basic Queries (1–10)
+
+Q1. Retrieve all employees from the Employees table.
+SELECT * FROM Employees;
+
+
+Q2. Display only employee names and salaries.
+SELECT Name, Salary
+FROM Employees;
+
+
+Q3. Find employees whose salary is greater than 50,000.
+SELECT *
+FROM Employees
+WHERE Salary > 50000;
+
+
+Q4. Find employees working in the IT department.
+SELECT *
+FROM Employees
+WHERE Department = 'IT';
+
+
+Q5. Display employees sorted by salary in descending order.
+SELECT *
+FROM Employees
+ORDER BY Salary DESC;
+
+
+Q6. Find the top 5 highest-paid employees.
+SELECT *
+FROM Employees
+ORDER BY Salary DESC
+LIMIT 5;
+
+
+SELECT TOP 5 *
+FROM Employees
+ORDER BY Salary DESC;
+
+
+Q7. Count the total number of employees.
+SELECT COUNT(*) AS TotalEmployees
+FROM Employees;
+
+
+Q8. Find the maximum salary.
+SELECT MAX(Salary)
+FROM Employees;
+
+
+Q9. Find the minimum salary.
+SELECT MIN(Salary)
+FROM Employees;
+
+
+Q10. Find the average salary.
+SELECT AVG(Salary)
+FROM Employees;
+
+
+
+Level 2: GROUP BY & Aggregate Functions (11–15)
+
+Q11. Count employees in each department.
+SELECT Department,
+       COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department;
+
+
+Q12. Find average salary of each department.
+SELECT Department,
+       AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department;
+
+
+Q13. Find departments having more than 5 employees.
+SELECT Department,
+       COUNT(*) AS TotalEmployees
+FROM Employees
+GROUP BY Department
+HAVING COUNT(*) > 5;
+
+
+Q14. Find highest salary in each department.
+SELECT Department,
+       MAX(Salary) AS HighestSalary
+FROM Employees
+GROUP BY Department;
+
+
+Q15. Find departments whose average salary exceeds 60,000.
+SELECT Department,
+       AVG(Salary) AS AvgSalary
+FROM Employees
+GROUP BY Department
+HAVING AVG(Salary) > 60000;
+
+
+
+Level 3: JOINs (16–20)
+
+Assume another table:
+Departments
+DepartmentID	DepartmentName
+101	IT
+102	HR
+
+Q16. Display employee names with department names.
+
+
+SELECT e.Name,
+       d.DepartmentName
+FROM Employees e
+JOIN Departments d
+ON e.DepartmentID = d.DepartmentID;
+
+
+Q17. Find employees who do not belong to any department.
+SELECT e.*
+FROM Employees e
+LEFT JOIN Departments d
+ON e.DepartmentID = d.DepartmentID
+WHERE d.DepartmentID IS NULL;
+
+
+Q18. Show all departments, even those without employees.
+SELECT d.DepartmentName,
+       e.Name
+FROM Departments d
+LEFT JOIN Employees e
+ON d.DepartmentID = e.DepartmentID;
+
+
+Q19. Find employees and their managers (Self Join).
+SELECT e.Name AS Employee,
+       m.Name AS Manager
+FROM Employees e
+LEFT JOIN Employees m
+ON e.ManagerID = m.EmployeeID;
+
+
+Q20. Display every employee with every department.
+SELECT e.Name,
+       d.DepartmentName
+FROM Employees e
+CROSS JOIN Departments d;
+
+
+
+Level 4: Subqueries (21–25)
+
+Q21. Find employees earning above average salary.
+SELECT Name,
+       Salary
+FROM Employees
+WHERE Salary >
+(
+    SELECT AVG(Salary)
+    FROM Employees
+);
+
+
+Q22. Find employees with the highest salary.
+SELECT *
+FROM Employees
+WHERE Salary =
+(
+    SELECT MAX(Salary)
+    FROM Employees
+);
+
+
+Q23. Find departments having at least one employee.
+SELECT *
+FROM Departments
+WHERE DepartmentID IN
+(
+    SELECT DepartmentID
+    FROM Employees
+);
+
+
+Q24. Find employees working in the same department as Ali.
+SELECT *
+FROM Employees
+WHERE DepartmentID =
+(
+    SELECT DepartmentID
+    FROM Employees
+    WHERE Name = 'Ali'
+);
+
+
+Q25. Find employees whose salary is greater than their department average.
+SELECT Name,
+       Salary,
+       Department
+FROM Employees e
+WHERE Salary >
+(
+    SELECT AVG(Salary)
+    FROM Employees
+    WHERE Department = e.Department
+);
+
+
+
+Level 5: CTEs & Advanced SQL (26–30)
+
+Q26. Use a CTE to display employees earning more than 60,000.
+WITH HighSalary AS
+(
+    SELECT *
+    FROM Employees
+    WHERE Salary > 60000
+)
+
+SELECT *
+FROM HighSalary;
+
+
+Q27. Find the second highest salary.
+SELECT MAX(Salary)
+FROM Employees
+WHERE Salary <
+(
+    SELECT MAX(Salary)
+    FROM Employees
+);
+
+
+Q28. Find duplicate employee names.
+SELECT Name,
+       COUNT(*) AS CountName
+FROM Employees
+GROUP BY Name
+HAVING COUNT(*) > 1;
+
+
+Q29. Rank employees by salary.
+SELECT Name,
+       Salary,
+       RANK() OVER (ORDER BY Salary DESC) AS SalaryRank
+FROM Employees;
+
+
+Q30. Find the top 3 highest-paid employees in each department.
+SELECT *
+FROM
+(
+    SELECT Name,
+           Department,
+           Salary,
+           ROW_NUMBER() OVER
+           (
+               PARTITION BY Department
+               ORDER BY Salary DESC
+           ) AS rn
+    FROM Employees
+) t
+WHERE rn <= 3;
